@@ -1,0 +1,30 @@
+.card {
+  width: 300px;
+  height: 400px;
+  margin: 20px;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: #32383e;
+  transition: all 200ms;
+}
+.card:hover {
+  border-radius: 50% 20% / 10% 40%;
+}
+
+.card__image {
+}
+
+.card__img {
+  height: 250px;
+}
+
+.card__name {
+  font-size: 1.5rem;
+}
+
+.card__button {
+  width: 50%;
+  height: 30px;
+}
