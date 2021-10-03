@@ -10,7 +10,7 @@ const App = () => {
   return (
     <div>
       <div>App, apiService name is {name}</div>
-      <div>Header</div>
+      <div style={{ backgroundColor: '#1C1E22' }}>Header</div>
       <Switch>
         <Route path="/" exact>
           <HomePage />
