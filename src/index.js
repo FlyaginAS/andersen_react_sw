@@ -1,15 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import './index.css';
-import App from './App';
-import { store } from './app/store';
+import App from './components/app';
+import store from './store';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
+import ErrorBoundry from './components/error-boundry';
+import { ApiServiceProvider } from './components/api-service-context';
+import { apiService } from './services';
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <ErrorBoundry>
+        <ApiServiceProvider value={apiService}>
+          <Router>
+            <App />
+          </Router>
+        </ApiServiceProvider>
+      </ErrorBoundry>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
