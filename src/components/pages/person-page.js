@@ -1,0 +1,24 @@
+import React from 'react';
+import { Link, Route } from 'react-router-dom';
+
+const PersonPage = () => {
+  return (
+    <div className="person-page">
+      <div className="person-info-wrap">
+        <PersonInfo />
+      </div>
+      <div className="person-additional">
+        <div className="person-additional__links">
+          <Link className="person-additional__link">Фильмы</Link>
+          <Link className="person-additional__link">Корабли</Link>
+        </div>
+        <div className="person-additional__info">
+          <PersonFilms />
+          <PersonStarships />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default PersonPage;

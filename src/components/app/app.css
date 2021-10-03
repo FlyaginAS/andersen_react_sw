@@ -1,2 +1,7 @@
 /* оттенки бэка #1C1E22   #272B30  #32383E*/
 /* бордеры  #141619*/
+.footer {
+  display: flex;
+  justify-content: end;
+  margin-top: 20px;
+}

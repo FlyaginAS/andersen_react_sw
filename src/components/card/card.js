@@ -1,10 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './card.css';
 import Button from '../button';
 
 const Card = () => {
   return (
-    <div className="card">
+    <Link to="/person-page/" className="card" title="To Person Page">
       <div className="card__image">
         <img
           className="card__img"
@@ -15,7 +16,7 @@ const Card = () => {
       <div className="card__button">
         <Button label="В избранное" />
       </div>
-    </div>
+    </Link>
   );
 };
 
