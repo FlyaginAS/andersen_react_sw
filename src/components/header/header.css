@@ -1,0 +1,32 @@
+.header {
+  height: 120px;
+  padding: 20px;
+  background-color: #1c1e22;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header__logo {
+}
+
+.header__buttons {
+}
+
+.header__button {
+  width: 120px;
+  height: 65px;
+}
+
+.button {
+  font: inherit;
+  color: inherit;
+  border: 2px solid #141619;
+  background: linear-gradient(to bottom, #464c53, #32363a);
+}
+
+.button:hover {
+  color: white;
+  background: linear-gradient(to bottom, #1f2224, #181a1c);
+}
