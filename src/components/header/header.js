@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from '../button/button';
 import './header.css';
 import logo from './logo.png';
 
@@ -9,8 +10,8 @@ const Header = () => {
         <img src={logo} alt="Logo" />
       </div>
       <div className="header__buttons">
-        <button className="header__button button">Вход</button>
-        <button className="header__button button">Регистрация</button>
+        <Button label="Вход" />
+        <Button label="Регистрация" />
       </div>
     </div>
   );

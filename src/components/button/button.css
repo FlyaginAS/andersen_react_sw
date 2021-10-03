@@ -1,0 +1,11 @@
+.button {
+  font: inherit;
+  color: inherit;
+  border: 2px solid #141619;
+  background: linear-gradient(to bottom, #464c53, #32363a);
+}
+
+.button:hover {
+  color: white;
+  background: linear-gradient(to bottom, #1f2224, #181a1c);
+}
