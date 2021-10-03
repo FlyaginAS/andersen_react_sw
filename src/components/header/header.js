@@ -4,6 +4,7 @@ import Button from '../button/button';
 import './header.css';
 import logo from './logo.png';
 
+//Button будет одна на весь сайт- делаю ее полностью независимой
 const Header = () => {
   return (
     <div className="header">
@@ -11,8 +12,12 @@ const Header = () => {
         <img src={logo} alt="Logo" title="To Home Page" />
       </Link>
       <div className="header__buttons">
-        <Button label="Вход" />
-        <Button label="Регистрация" />
+        <div className="header__button">
+          <Button label="Вход" />
+        </div>
+        <div className="header__button">
+          <Button label="Регистрация" />
+        </div>
       </div>
     </div>
   );
