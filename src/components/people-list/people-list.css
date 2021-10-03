@@ -1,0 +1,40 @@
+.people-list {
+  border: 2px solid #32383e;
+  border-radius: 10px;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 100px;
+  padding: 20px;
+  box-shadow: 0 0 5px white;
+}
+
+.people-card {
+  width: 300px;
+  height: 400px;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: #32383e;
+  transition: all 200ms;
+}
+.people-card:hover {
+  border-radius: 50% 20% / 10% 40%;
+}
+
+.people-card__image {
+}
+
+.people-card__img {
+  height: 250px;
+}
+
+.people-card__name {
+  font-size: 1.5rem;
+}
+
+.people-card__button {
+  width: 50%;
+  height: 30px;
+}

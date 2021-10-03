@@ -21,6 +21,11 @@
   border: none;
   border-radius: 10% 30% 50% 70%;
   font-size: 18px;
+  transition: all 200ms;
+}
+
+.search-panel input:hover {
+  box-shadow: 0 0 5px white;
 }
 
 .search-panel__button {
