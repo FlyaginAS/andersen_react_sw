@@ -13,11 +13,10 @@ const App = () => {
         <Route path="/" exact>
           <HomePage />
         </Route>
-        <Route path="/person-page/" exact>
+        <Route path="/person-page/1/films" exact>
           <PersonPage />
         </Route>
       </Switch>
-      <footer className="footer">Powered by FAS</footer>
     </div>
   );
 };

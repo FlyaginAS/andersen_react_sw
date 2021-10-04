@@ -3,6 +3,7 @@ import { Link, Route } from 'react-router-dom';
 import PersonInfo from '../person-info';
 import PersonFilms from '../person-films';
 import PersonStarships from '../person-starships';
+import './person-page.css';
 
 const PersonPage = () => {
   return (

@@ -5,7 +5,11 @@ import Button from '../button';
 
 const Card = () => {
   return (
-    <Link to="/person-page/" className="card" title="To Person Page">
+    <Link
+      to="/person-page/1/films"
+      className="card"
+      title="To Person Page"
+    >
       <div className="card__image">
         <img
           className="card__img"
