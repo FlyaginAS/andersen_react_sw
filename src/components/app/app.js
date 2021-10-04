@@ -13,7 +13,7 @@ const App = () => {
         <Route path="/" exact>
           <HomePage />
         </Route>
-        <Route path="/person-page/1/films" exact>
+        <Route path="/person-page/1/">
           <PersonPage />
         </Route>
       </Switch>

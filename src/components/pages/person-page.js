@@ -13,12 +13,20 @@ const PersonPage = () => {
       </div>
       <div className="person-additional">
         <div className="person-additional__links">
-          <Link className="person-additional__link">Фильмы</Link>
-          <Link className="person-additional__link">Корабли</Link>
+          <Link to="films" className="person-additional__link">
+            Фильмы
+          </Link>
+          <Link to="starships" className="person-additional__link">
+            Корабли
+          </Link>
         </div>
         <div className="person-additional__info">
-          <PersonFilms />
-          <PersonStarships />
+          <Route path="/person-page/1/films">
+            <PersonFilms />
+          </Route>
+          <Route path="/person-page/1/starships">
+            <PersonStarships />
+          </Route>
         </div>
       </div>
     </div>
