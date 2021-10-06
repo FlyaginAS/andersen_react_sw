@@ -21,11 +21,11 @@ const PersonFilms = ({ urls }) => {
     );
   }
 
-  const filmList = films.map(({ title, episode, release_date }) => (
+  const filmList = films.map(({ title, episode, releaseDate }) => (
     <div key={title} className="person-films__film">
       Title: {title} <br />
       Episode: {episode} <br />
-      Release Date: {release_date} <br />
+      Release Date: {releaseDate} <br />
     </div>
   ));
 

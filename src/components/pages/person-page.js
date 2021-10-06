@@ -10,7 +10,7 @@ import apiService from '../../services/api-service';
 import Spinner from '../spinner';
 
 const PersonPage = () => {
-  //хотел брать состояние из стора, но при перезагрузке странице стор обнулялся
+  //хотел брать person из стора, но при перезагрузке странице стор обнулялся
   const { id } = useParams();
 
   const [person, setPerson] = useState(null);
@@ -18,7 +18,6 @@ const PersonPage = () => {
   useEffect(() => {
     apiService.getPerson(id).then((pers) => setPerson(pers));
   }, [id]);
-  console.log(person);
 
   return !person ? (
     <Spinner />
@@ -41,7 +40,7 @@ const PersonPage = () => {
             <PersonFilms urls={person.films} />
           </Route>
           <Route path="/person-page/:id/starships">
-            <PersonStarships person={person} />
+            <PersonStarships urls={person.starships} />
           </Route>
         </div>
       </div>

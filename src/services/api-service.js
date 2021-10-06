@@ -88,14 +88,21 @@ class ApiService {
     return films.map(this._transformFilm);
   };
 
-  getPersonStarships = async (personId) => {
-    const person = await this.getResource(
-      `https://swapi.dev/api/people/${personId}`
-    );
-    const promiseArr = person.starships.map(this.getResource);
+  // getPersonStarships = async (personId) => {
+  //   const person = await this.getResource(
+  //     `https://swapi.dev/api/people/${personId}`
+  //   );
+  //   const promiseArr = person.starships.map(this.getResource);
+
+  //   const starships = await Promise.all(promiseArr);
+  //   return starships;
+  // };
+
+  getPersonStarships = async (urls) => {
+    const promiseArr = urls.map(this.getResource);
 
     const starships = await Promise.all(promiseArr);
-    return starships;
+    return starships.map(this._transformStarship);
   };
 }
 //проверил в консоле- работает
