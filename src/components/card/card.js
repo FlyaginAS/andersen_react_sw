@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './card.css';
 import Button from '../button';
 
-const Card = () => {
+const Card = ({ person }) => {
   return (
     <Link
       to="/person-page/1/films"

@@ -32,8 +32,8 @@ export const peopleSlice = createSlice({
 
 //экспорт созданных для нас экшен-криэйтеров
 //экспорт селекторов
-export const selectPeople = (state) => state.people;
-export const selectStatus = (state) => state.status;
+export const selectPeople = (state) => state.people.people;
+export const selectStatus = (state) => state.people.status;
 
 //экспорт созданного для нас редьюсера
 export default peopleSlice.reducer;
