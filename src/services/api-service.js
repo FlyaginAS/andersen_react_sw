@@ -6,9 +6,9 @@ class ApiService {
     return {
       id: this._extractId(person),
       name: person.name,
-      height: person.gender,
-      mass: person.birth_year,
-      hairColor: person.eye_color,
+      height: person.height,
+      mass: person.mass,
+      hairColor: person.hair_color,
       skinColor: person.skin_color,
       eyeColor: person.eye_color,
       birthYear: person.birth_year,

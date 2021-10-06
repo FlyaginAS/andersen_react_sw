@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { Route, Switch } from 'react-router';
 import Header from '../header';
 import { HomePage, PersonPage } from '../pages';
+import { getPeople } from '../../store/peopleSlice';
 
 import './app.css';
 
 const App = () => {
-  //понял что теряю состояние в person page,попробую перенести
-  //инициализацию peopleSlice на уровень app
   return (
     <div>
       <Header />

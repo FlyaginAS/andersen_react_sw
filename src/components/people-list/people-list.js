@@ -1,3 +1,4 @@
+import { nanoid } from '@reduxjs/toolkit';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -11,14 +12,16 @@ import './people-list.css';
 
 const PeopleList = () => {
   const dispatch = useDispatch();
-  const people = useSelector(selectPeople);
-  const status = useSelector(selectStatus);
 
   useEffect(() => {
     dispatch(getPeople());
   }, [dispatch]);
+  const people = useSelector(selectPeople);
+  const status = useSelector(selectStatus);
 
-  const personList = people.map((person) => <Card person={person} />);
+  const personList = people.map((person) => (
+    <Card key={person.id} person={person} />
+  ));
 
   return (
     <div className="people-list">

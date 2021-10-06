@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, Route, useParams } from 'react-router-dom';
 import PersonInfo from '../person-info';
 import PersonFilms from '../person-films';
@@ -9,16 +9,19 @@ import { selectPerson } from '../../store/peopleSlice';
 import apiService from '../../services/api-service';
 
 const PersonPage = () => {
-  //хотел брать состояние из стора, но тогда если поделиться ссылкой
-  //с человеком- то у него стор загружен не будет
+  //хотел брать состояние из стора, но при перезагрузке странице стор обнулялся
   const { id } = useParams();
+  console.log(id);
+  const [person, setPerson] = useState({});
 
-  useEffect(() => {}, [id]);
+  useEffect(() => {
+    apiService.getPerson(id).then((pers) => setPerson(pers));
+  }, [id]);
 
   return (
     <div className="person-page">
       <div className="person-info-wrap">
-        <PersonInfo />
+        <PersonInfo person={person} />
       </div>
       <div className="person-additional">
         <div className="person-additional__links">
@@ -30,10 +33,10 @@ const PersonPage = () => {
           </Link>
         </div>
         <div className="person-additional__info">
-          <Route path="/person-page/1/films">
+          <Route path="/person-page/:id/films">
             <PersonFilms />
           </Route>
-          <Route path="/person-page/1/starships">
+          <Route path="/person-page/:id/starships">
             <PersonStarships />
           </Route>
         </div>
