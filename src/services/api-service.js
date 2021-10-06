@@ -34,7 +34,7 @@ class ApiService {
     return {
       id: this._extractId(film),
       title: film.title,
-      episode: film.episode,
+      episode: film.episode_id,
       releaseDate: film.release_date,
     };
   };
@@ -70,16 +70,22 @@ class ApiService {
     return this._transformPerson(person);
   };
 
-  getPersonFilms = async (personId) => {
-    let person = await this.getResource(
-      `https://swapi.dev/api/people/${personId}`
-    );
-    person = this._transformPerson(person);
+  // getPersonFilms = async (personId) => {
+  //   let person = await this.getResource(
+  //     `https://swapi.dev/api/people/${personId}`
+  //   );
+  //   person = this._transformPerson(person);
 
-    const promiseArr = person.films.map(this.getResource);
+  //   const promiseArr = person.films.map(this.getResource);
+
+  //   const films = await Promise.all(promiseArr);
+  //   return films;
+  // };
+  getPersonFilms = async (urls) => {
+    const promiseArr = urls.map(this.getResource);
 
     const films = await Promise.all(promiseArr);
-    return films;
+    return films.map(this._transformFilm);
   };
 
   getPersonStarships = async (personId) => {

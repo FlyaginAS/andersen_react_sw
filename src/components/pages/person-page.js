@@ -7,18 +7,22 @@ import './person-page.css';
 import { useSelector } from 'react-redux';
 import { selectPerson } from '../../store/peopleSlice';
 import apiService from '../../services/api-service';
+import Spinner from '../spinner';
 
 const PersonPage = () => {
   //хотел брать состояние из стора, но при перезагрузке странице стор обнулялся
   const { id } = useParams();
-  console.log(id);
-  const [person, setPerson] = useState({});
+
+  const [person, setPerson] = useState(null);
 
   useEffect(() => {
     apiService.getPerson(id).then((pers) => setPerson(pers));
   }, [id]);
+  console.log(person);
 
-  return (
+  return !person ? (
+    <Spinner />
+  ) : (
     <div className="person-page">
       <div className="person-info-wrap">
         <PersonInfo person={person} />
@@ -34,10 +38,10 @@ const PersonPage = () => {
         </div>
         <div className="person-additional__info">
           <Route path="/person-page/:id/films">
-            <PersonFilms />
+            <PersonFilms urls={person.films} />
           </Route>
           <Route path="/person-page/:id/starships">
-            <PersonStarships />
+            <PersonStarships person={person} />
           </Route>
         </div>
       </div>
