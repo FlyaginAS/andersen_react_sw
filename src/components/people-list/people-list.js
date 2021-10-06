@@ -18,10 +18,7 @@ const PeopleList = () => {
     dispatch(getPeople());
   }, [dispatch]);
 
-  console.log(people);
   const personList = people.map((person) => <Card person={person} />);
-
-  console.log(people);
 
   return (
     <div className="people-list">
