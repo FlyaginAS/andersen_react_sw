@@ -2,6 +2,7 @@ import React from 'react';
 import './person-info.css';
 
 const PersonInfo = () => {
+  //должен получать айди из роута
   return (
     <div className="person-info">
       <h2 className="person-info_h2">Person info</h2>

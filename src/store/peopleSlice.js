@@ -34,6 +34,8 @@ export const peopleSlice = createSlice({
 //экспорт селекторов
 export const selectPeople = (state) => state.people.people;
 export const selectStatus = (state) => state.people.status;
+export const selectPerson = (id) => (state) =>
+  state.people.people.find((item) => item.id == id);
 
 //экспорт созданного для нас редьюсера
 export default peopleSlice.reducer;
