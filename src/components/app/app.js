@@ -1,22 +1,20 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Route, Switch } from 'react-router';
-import apiServiceContext from '../api-service-context';
-import { HomePage, Page1 } from '../pages';
+import Header from '../header';
+import { HomePage, PersonPage } from '../pages';
 
 import './app.css';
 
 const App = () => {
-  const { name } = useContext(apiServiceContext);
   return (
     <div>
-      <div>App, apiService name is {name}</div>
-      <div>Header</div>
+      <Header />
       <Switch>
         <Route path="/" exact>
           <HomePage />
         </Route>
-        <Route path="/page1" exact>
-          <Page1 />
+        <Route path="/person-page/1/">
+          <PersonPage />
         </Route>
       </Switch>
     </div>

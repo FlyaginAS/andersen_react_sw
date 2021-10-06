@@ -1,0 +1,14 @@
+.people-list {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  border: 2px solid #32383e;
+  border-radius: 10px;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 100px;
+  padding: 20px;
+  box-shadow: 0 0 5px white;
+}

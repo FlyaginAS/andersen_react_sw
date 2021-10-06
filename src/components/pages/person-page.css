@@ -1,0 +1,26 @@
+.person-page {
+}
+
+.person-info-wrap {
+}
+
+.person-additional {
+  border: 2px solid lightgray;
+  margin-top: 20px;
+}
+
+.person-additional__links {
+  display: flex;
+}
+
+.person-additional__link {
+  color: antiquewhite;
+  border: 1px solid antiquewhite;
+  text-decoration: none;
+  font-size: 20px;
+  padding: 3px;
+}
+
+.person-additional__info {
+  margin-top: 20px;
+}

@@ -1,1 +1,15 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
 
+body {
+  box-sizing: border-box;
+  background-color: #272b30;
+  color: #d5d8dc;
+  font-family: arial, sans-serif;
+  margin-bottom: 20px;
+}
