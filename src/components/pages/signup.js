@@ -7,6 +7,13 @@ const Singup = () => {
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
 
+  const user = {
+    login: 'user1',
+    parol: 'parol1',
+    favorites: ['id1', 'id2'],
+    history: [],
+  };
+
   const onSubmit = (evt) => {
     evt.preventDefault();
     console.log(login, password); //worked
