@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 
 const Singup = () => {
   const myStorage = window.localStorage;
+  console.log(myStorage);
 
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
 
   const onSubmit = (evt) => {
     evt.preventDefault();
-    console.log('submit'); //worked
+    console.log(login, password); //worked
   };
 
   return (
@@ -16,10 +17,16 @@ const Singup = () => {
       <h2>Регистрация</h2>
       <div>
         <form onSubmit={onSubmit}>
-          <input type="text" placeholder="Enter login" required />
+          <input
+            type="text"
+            placeholder="Enter login"
+            onChange={(evt) => setLogin(evt.target.value)}
+            required
+          />
           <input
             type="password"
             placeholder="Enter password"
+            onChange={(evt) => setPassword(evt.target.value)}
             required
           />
           <button>Зарегистирироваться</button>
