@@ -22,4 +22,6 @@
 .header__button {
   width: 120px;
   height: 65px;
+  text-decoration: none;
+  color: #d5d8dc;
 }
