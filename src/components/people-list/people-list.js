@@ -5,6 +5,7 @@ import {
   getPeople,
   selectPeople,
   selectStatus,
+  selectFilter,
 } from '../../store/peopleSlice';
 import Card from '../card';
 import Spinner from '../spinner';
@@ -16,10 +17,22 @@ const PeopleList = () => {
   useEffect(() => {
     dispatch(getPeople());
   }, [dispatch]);
+
   const people = useSelector(selectPeople);
+  const filter = useSelector(selectFilter);
+
+  const filterPeople = (arr, filter) => {
+    let newArr = arr.filter((item) =>
+      item.name.toLowerCase().includes(filter.toLowerCase())
+    );
+    return newArr;
+  };
+
+  const filteredPeople = filterPeople(people, filter);
+
   const status = useSelector(selectStatus);
 
-  const personList = people.map((person) => (
+  const personList = filteredPeople.map((person) => (
     <Card key={person.id} person={person} />
   ));
 
