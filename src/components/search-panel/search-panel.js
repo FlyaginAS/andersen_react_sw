@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { changeFilter } from '../../store/peopleSlice';
 import Button from '../button/button';
 import './search-panel.css';
@@ -13,8 +14,6 @@ const SearchPanel = () => {
     dispatch(changeFilter(search));
   }, [search, dispatch]);
 
-  const onSearch = () => {};
-
   return (
     <div className="search-panel">
       <input
@@ -26,9 +25,10 @@ const SearchPanel = () => {
           setSearch(evt.target.value);
         }}
       />
-      <div className="search-panel__button">
-        <Button label="Поиск" onClick={onSearch} />
-      </div>
+
+      <Link to={`/search=${search}`} className="search-panel__button">
+        <Button label="Поиск" />
+      </Link>
     </div>
   );
 };

@@ -104,6 +104,14 @@ class ApiService {
     const starships = await Promise.all(promiseArr);
     return starships.map(this._transformStarship);
   };
+
+  getSearchByName = async (name) => {
+    const res = await this.getResource(
+      `https://swapi.dev/api/people/?search=${name}`
+    );
+
+    return res.results.map(this._transformPerson);
+  };
 }
 //проверил в консоле- работает
 const apiService = new ApiService();
