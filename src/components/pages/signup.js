@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router';
 
 const Singup = () => {
   const myStorage = window.localStorage;
@@ -6,17 +7,38 @@ const Singup = () => {
 
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
-  const user = {
-    login: 'user1',
-    parol: 'parol1',
-    favorites: ['id1', 'id2'],
-    history: [],
+  const setToStorage = (name, data) => {
+    const myStorage = window.localStorage;
+    myStorage.setItem(name, JSON.stringify(data));
+  };
+
+  const getFromStorage = (name) => {
+    const myStorage = window.localStorage;
+    return JSON.parse(myStorage.getItem(name));
+  };
+
+  const isUserRegistered = (name) => {
+    const myStorage = window.localStorage;
+    const user = localStorage.getItem(name);
+    return !!user;
   };
 
   const onSubmit = (evt) => {
     evt.preventDefault();
     console.log(login, password); //worked
+    if (isUserRegistered(login)) {
+      return setError('Такой пользователь уже существует!');
+    }
+    const user = {
+      login: login,
+      parol: password,
+      favorites: [],
+      history: [],
+    };
+    setToStorage(login, user);
+    setError('');
   };
 
   return (
@@ -37,6 +59,7 @@ const Singup = () => {
             required
           />
           <button>Зарегистирироваться</button>
+          {error ? <h2>{error}</h2> : null}
         </form>
       </div>
     </div>
