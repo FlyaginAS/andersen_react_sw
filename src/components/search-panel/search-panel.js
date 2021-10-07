@@ -1,18 +1,34 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { changeFilter } from '../../store/peopleSlice';
 import Button from '../button/button';
 import './search-panel.css';
 
 const SearchPanel = () => {
+  const [search, setSearch] = useState('');
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(changeFilter(search));
+  }, [search, dispatch]);
+
   return (
     <div className="search-panel">
       <input
         сlassName="search-panel__input"
         type="text"
         placeholder="Пожалуйста, введите имя персонажа"
+        value={search}
+        onChange={(evt) => {
+          setSearch(evt.target.value);
+        }}
       />
-      <div className="search-panel__button">
+
+      <Link to={`/search=${search}`} className="search-panel__button">
         <Button label="Поиск" />
-      </div>
+      </Link>
     </div>
   );
 };

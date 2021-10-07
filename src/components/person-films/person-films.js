@@ -1,41 +1,35 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { apiService } from '../../services';
+import Spinner from '../spinner';
 import './person-films.css';
 
-const PersonFilms = () => {
-  return (
-    <div className="person-films">
-      <div className="person-films__film">
-        Title: A new Hope <br />
-        Episode: 4 <br />
-        Release Date: "1977-05-25" <br />
+const PersonFilms = ({ urls }) => {
+  const [films, setFilms] = useState(null);
+
+  useEffect(() => {
+    apiService.getPersonFilms(urls).then((films) => {
+      setFilms(films);
+    });
+  }, [urls]);
+
+  console.log(films);
+  if (!films) {
+    return (
+      <div className="person-films">
+        <Spinner />
       </div>
-      <div className="person-films__film">
-        Title: A new Hope <br />
-        Episode: 4 <br />
-        Release Date: "1977-05-25" <br />
-      </div>
-      <div className="person-films__film">
-        Title: A new Hope <br />
-        Episode: 4 <br />
-        Release Date: "1977-05-25" <br />
-      </div>
-      <div className="person-films__film">
-        Title: A new Hope <br />
-        Episode: 4 <br />
-        Release Date: "1977-05-25" <br />
-      </div>
-      <div className="person-films__film">
-        Title: A new Hope <br />
-        Episode: 4 <br />
-        Release Date: "1977-05-25" <br />
-      </div>
-      <div className="person-films__film">
-        Title: A new Hope <br />
-        Episode: 4 <br />
-        Release Date: "1977-05-25" <br />
-      </div>
+    );
+  }
+
+  const filmList = films.map(({ title, episode, releaseDate }) => (
+    <div key={title} className="person-films__film">
+      Title: {title} <br />
+      Episode: {episode} <br />
+      Release Date: {releaseDate} <br />
     </div>
-  );
+  ));
+
+  return <div className="person-films">{filmList}</div>;
 };
 
 export default PersonFilms;

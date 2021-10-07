@@ -12,12 +12,12 @@ const Header = () => {
         <img src={logo} alt="Logo" title="To Home Page" />
       </Link>
       <div className="header__buttons">
-        <div className="header__button">
+        <Link to="/signin" className="header__button">
           <Button label="Вход" />
-        </div>
-        <div className="header__button">
+        </Link>
+        <Link to="/signup" className="header__button">
           <Button label="Регистрация" />
-        </div>
+        </Link>
       </div>
     </div>
   );

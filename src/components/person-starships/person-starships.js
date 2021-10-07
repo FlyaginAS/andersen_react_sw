@@ -1,19 +1,53 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './person-starships.css';
+import { apiService } from '../../services';
+import Spinner from '../spinner';
 
-const PersonStarships = () => {
-  return (
-    <div className="person-starships">
-      <div className="person-starships__starship">
-        Name: CR90 corvette <br />
-        Manufacturer: Corellian Engineering Corporation <br />
-        StarshipClass: corvette <br />
-        Cost in credits: 3500000 <br />
-        Length: 150 <br />
-        Hyperdrive rating: 2.0 <br />
+const PersonStarships = ({ urls }) => {
+  const [starships, setStarships] = useState(null);
+  console.log(urls);
+
+  useEffect(() => {
+    apiService.getPersonStarships(urls).then((starships) => {
+      console.log(starships);
+      setStarships(starships);
+    });
+  }, [urls]);
+
+  if (!starships) {
+    return (
+      <div className="person-starships">
+        <Spinner />
       </div>
-    </div>
+    );
+  }
+  if (starships.length === 0) {
+    return (
+      <div className="person-starships">There is no starships</div>
+    );
+  }
+
+  const starshipsList = starships.map(
+    ({
+      name,
+      manufacturer,
+      starshipClass,
+      costInCredits,
+      length,
+      hyperdriveRating,
+    }) => (
+      <div key={name} className="person-starships__starship">
+        Name: {name} <br />
+        Manufacturer: {manufacturer} <br />
+        StarshipClass: {starshipClass} <br />
+        Cost in credits: {costInCredits} <br />
+        Length: {length} <br />
+        Hyperdrive rating: {hyperdriveRating} <br />
+      </div>
+    )
   );
+
+  return <div className="person-starships">{starshipsList}</div>;
 };
 
 export default PersonStarships;
