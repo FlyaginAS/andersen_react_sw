@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
+import {
+  selectIsLoggedIn,
+  loginUser,
+} from '../../store/authorizationSlice';
 
 const Singup = () => {
   const myStorage = window.localStorage;
   console.log(myStorage);
+  const dispatch = useDispatch();
 
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
@@ -39,7 +45,10 @@ const Singup = () => {
     };
     setToStorage(login, user);
     setError('');
+    dispatch(loginUser());
   };
+
+  const isLoggedIn = useSelector(selectIsLoggedIn);
 
   return (
     <div>
@@ -60,6 +69,7 @@ const Singup = () => {
           />
           <button>Зарегистирироваться</button>
           {error ? <h2>{error}</h2> : null}
+          {isLoggedIn ? <h2>вы авторизованы</h2> : null}
         </form>
       </div>
     </div>
