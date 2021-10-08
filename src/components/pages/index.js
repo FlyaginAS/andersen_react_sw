@@ -1,7 +1,7 @@
 import HomePage from './home-page';
 import PersonPage from './person-page';
 import SearchPage from './search-page';
-import Singin from './signin';
-import Singup from './signup';
+import Signin from './signin';
+import Signup from './signup';
 
-export { HomePage, PersonPage, SearchPage, Singin, Singup };
+export { HomePage, PersonPage, SearchPage, Signin, Signup };

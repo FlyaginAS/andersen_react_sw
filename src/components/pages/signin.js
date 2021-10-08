@@ -1,6 +1,7 @@
 import React from 'react';
 
-const Singin = () => {
+const Signin = () => {
+  const signin = () => {};
   return (
     <div>
       <h2>Войти</h2>
@@ -11,10 +12,10 @@ const Singin = () => {
           placeholder="Enter password"
           required
         />
-        <button>Войти</button>
+        <button onClick={() => signin}>Войти</button>
       </form>
     </div>
   );
 };
 
-export default Singin;
+export default Signin;

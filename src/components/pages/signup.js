@@ -7,7 +7,7 @@ import {
 } from '../../store/authorizationSlice';
 import storageService from '../../services/storage-service';
 
-const Singup = () => {
+const Signup = () => {
   const { isUserRegistered, setToStorage, setLastActiveUserName } =
     storageService;
   const dispatch = useDispatch();
@@ -63,4 +63,4 @@ const Singup = () => {
   );
 };
 
-export default Singup;
+export default Signup;
