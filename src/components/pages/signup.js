@@ -25,8 +25,8 @@ const Singup = () => {
     const user = {
       login: login,
       parol: password,
-      favorites: [],
-      history: [],
+      favorites: ['1', '3', '5'],
+      history: ['luk', 'dart', 'lei'],
     };
 
     setToStorage(login, user);

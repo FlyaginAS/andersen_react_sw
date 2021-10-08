@@ -11,10 +11,13 @@ export const authorizationSlice = createSlice({
     loginUser: (state, action) => {
       state.user = action.payload;
     },
+    logoutUser: (state) => {
+      state.user = null;
+    },
   },
 });
 
-export const { loginUser } = authorizationSlice.actions;
+export const { loginUser, logoutUser } = authorizationSlice.actions;
 
 export const selectUser = (state) => state.authorization.user;
 
