@@ -24,7 +24,7 @@ const Signup = () => {
     }
     const user = {
       login: login,
-      parol: password,
+      password: password,
       favorites: ['1', '3', '5'],
       history: ['luk', 'dart', 'lei'],
     };

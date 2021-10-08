@@ -1,21 +1,43 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router';
 import storageService from '../../services/storage-service';
+import {
+  loginUser,
+  selectUser,
+} from '../../store/authorizationSlice';
 
 const Signin = () => {
+  const dispatch = useDispatch();
   const { getFromStorage } = storageService;
-  const [login, setLogin] = useState();
-  const [password, setPassword] = useState();
+  const [login, setLogin] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const history = useHistory();
 
-  const signin = (log, pass) => {
+  const signin = (evt) => {
+    evt.preventDefault();
     //read from localstorage
+    const user = getFromStorage(login);
+
     //check password
+    if (!user) {
+      setError('Такой юзер не зарегистрирован');
+      return;
+    } else if (user.password !== password) {
+      setError('Неверный пароль');
+      return;
+    }
     //write user  to state
+    dispatch(loginUser(user));
+    history.push('/');
   };
 
   return (
     <div>
       <h2>Войти</h2>
-      <form>
+      {error ? <h2>{error}</h2> : null}
+      <form onSubmit={signin}>
         <input
           type="text"
           placeholder="Enter login"
@@ -30,7 +52,7 @@ const Signin = () => {
           value={password}
           required
         />
-        <button onClick={() => signin}>Войти</button>
+        <button>Войти</button>
       </form>
     </div>
   );
