@@ -29,6 +29,7 @@ const Header = () => {
 
         {user ? (
           <React.Fragment>
+            <h2 style={{ padding: '15px' }}>{user.login}</h2>
             <Link to="/favorites" className="header__button">
               <Button label="Избранное" />
             </Link>
