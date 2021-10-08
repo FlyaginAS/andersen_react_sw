@@ -5,43 +5,20 @@ import {
   selectUser,
   loginUser,
 } from '../../store/authorizationSlice';
+import storageService from '../../services/storage-service';
 
 const Singup = () => {
-  const myStorage = window.localStorage;
-  console.log(myStorage);
+  const { isUserRegistered, setToStorage, setLastActiveUserName } =
+    storageService;
   const dispatch = useDispatch();
 
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
-  const setToStorage = (name, data) => {
-    const myStorage = window.localStorage;
-    myStorage.setItem(name, JSON.stringify(data));
-  };
-
-  const getFromStorage = (name) => {
-    const myStorage = window.localStorage;
-    return JSON.parse(myStorage.getItem(name));
-  };
-
-  const isUserRegistered = (name) => {
-    const myStorage = window.localStorage;
-    const user = localStorage.getItem(name);
-    return !!user;
-  };
-
-  const setLastActiveUserName = (name) => {
-    setToStorage('lastActiveUser', name);
-  };
-
-  const getLastActiveUserName = (name) => {
-    return getFromStorage('lastActiveUser');
-  };
-
   const onSubmit = (evt) => {
     evt.preventDefault();
-    console.log(login, password); //worked
+
     if (isUserRegistered(login)) {
       return setError('Такой пользователь уже существует!');
     }
@@ -51,10 +28,10 @@ const Singup = () => {
       favorites: [],
       history: [],
     };
+
     setToStorage(login, user);
     setLastActiveUserName(login);
     setError('');
-
     dispatch(loginUser(user));
   };
 
