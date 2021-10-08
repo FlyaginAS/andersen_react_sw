@@ -2,7 +2,14 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Switch } from 'react-router';
 import Header from '../header';
-import { HomePage, PersonPage, SearchPage, Signup } from '../pages';
+import {
+  FavoritesPage,
+  HistoryPage,
+  HomePage,
+  PersonPage,
+  SearchPage,
+  Signup,
+} from '../pages';
 import { getPeople } from '../../store/peopleSlice';
 
 import './app.css';
@@ -27,6 +34,12 @@ const App = () => {
         </Route>
         <Route path="/signup">
           <Signup />
+        </Route>
+        <Route path="/history">
+          <HistoryPage />
+        </Route>
+        <Route path="/favorites">
+          <FavoritesPage />
         </Route>
       </Switch>
     </div>
