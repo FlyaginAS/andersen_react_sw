@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import {
-  selectIsLoggedIn,
+  selectUser,
   loginUser,
 } from '../../store/authorizationSlice';
 
@@ -31,6 +31,14 @@ const Singup = () => {
     return !!user;
   };
 
+  const setLastActiveUserName = (name) => {
+    setToStorage('lastActiveUser', name);
+  };
+
+  const getLastActiveUserName = (name) => {
+    return getFromStorage('lastActiveUser');
+  };
+
   const onSubmit = (evt) => {
     evt.preventDefault();
     console.log(login, password); //worked
@@ -44,11 +52,13 @@ const Singup = () => {
       history: [],
     };
     setToStorage(login, user);
+    setLastActiveUserName(login);
     setError('');
-    dispatch(loginUser());
+
+    dispatch(loginUser(user));
   };
 
-  const isLoggedIn = useSelector(selectIsLoggedIn);
+  const user = useSelector(selectUser);
 
   return (
     <div>
@@ -69,7 +79,7 @@ const Singup = () => {
           />
           <button>Зарегистирироваться</button>
           {error ? <h2>{error}</h2> : null}
-          {isLoggedIn ? <h2>вы авторизованы</h2> : null}
+          {user ? <h2>вы авторизованы</h2> : null}
         </form>
       </div>
     </div>
