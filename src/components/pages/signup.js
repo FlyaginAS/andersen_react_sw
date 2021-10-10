@@ -8,6 +8,7 @@ import {
 import storageService from '../../services/storage-service';
 
 const Signup = () => {
+  //todo вынести логику регистрации в миддлвар- после разработки оставшегося функционала
   const { isUserRegistered, setToStorage, setLastActiveUserName } =
     storageService;
   const dispatch = useDispatch();
@@ -25,7 +26,7 @@ const Signup = () => {
     const user = {
       login: login,
       password: password,
-      favorites: ['1', '3', '5'],
+      favorites: [],
       history: ['luk', 'dart', 'lei'],
     };
 
