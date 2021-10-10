@@ -16,6 +16,11 @@ export const authorizationSlice = createSlice({
       state.user = null;
     },
     addFavorites: (state, action) => {
+      const id = action.payload;
+      const favorites = state.user.favorites;
+      if (favorites.includes(id)) {
+        return;
+      }
       state.user.favorites.push(action.payload);
     },
   },

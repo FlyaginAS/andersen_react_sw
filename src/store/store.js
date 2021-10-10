@@ -31,6 +31,11 @@ const checkPermissionToAddToFavorites =
       //todo переписать условие через &
       if (store.getState().authorization.user) {
         next(action);
+        //сохраняем в стор обновленного юзера. Это побочное
+        //действие можно выполнять или тут, или в компоненте,
+        // но не в редюсере- он чистая ф-ия
+        const user = store.getState().authorization.user;
+        storageService.setToStorage(user.login, user);
       }
     } else {
       next(action);
