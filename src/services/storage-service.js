@@ -21,6 +21,10 @@ class StorageService {
   getLastActiveUserName = (name) => {
     return this.getFromStorage('lastActiveUser');
   };
+  getLastUser = () => {
+    const name = this.getLastActiveUserName();
+    return this.getFromStorage(name);
+  };
 }
 
 const storageService = new StorageService();

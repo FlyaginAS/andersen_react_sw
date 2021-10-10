@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import apiService from '../services/api-service';
 
 //начальное состояние стейта
+//тут буду загружать данные из локалстридж
 const initialState = {
   people: [],
   status: 'idle',
