@@ -21,7 +21,7 @@ const SearchPanel = () => {
   };
 
   return (
-    <div className="search-panel">
+    <form className="search-panel" onSubmit={onSearchClick}>
       <input
         сlassName="search-panel__input"
         type="text"
@@ -35,7 +35,7 @@ const SearchPanel = () => {
       <Link to={`/search=${search}`} className="search-panel__button">
         <Button label="Поиск" onClick={onSearchClick} />
       </Link>
-    </div>
+    </form>
   );
 };
 
