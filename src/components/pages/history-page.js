@@ -32,7 +32,13 @@ const HistoryPage = () => {
   }, []);
 
   return user ? (
-    <div className="history-page">{elements}</div>
+    history.length === 0 ? (
+      <div className="history-page">
+        Истории еще нет. Попробуйте поискать
+      </div>
+    ) : (
+      <div className="history-page">{elements}</div>
+    )
   ) : (
     <Redirect to="/signin" />
   );

@@ -29,7 +29,13 @@ const FavoritesPage = () => {
 
   const user = useSelector(selectUser);
   return user ? (
-    <div className="favorites-page">{cards}</div>
+    arrayOfId.length === 0 ? (
+      <div className="favorites-page">
+        В избранное еще ничего не добавлено
+      </div>
+    ) : (
+      <div className="favorites-page">{cards}</div>
+    )
   ) : (
     <Redirect to="/signin" />
   );
