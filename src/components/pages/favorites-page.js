@@ -7,6 +7,7 @@ import {
 } from '../../store/authorizationSlice';
 import Card from '../card';
 import { apiService } from '../../services';
+import './favorites-page.css';
 
 const FavoritesPage = () => {
   const { getPerson } = apiService;
@@ -28,10 +29,7 @@ const FavoritesPage = () => {
 
   const user = useSelector(selectUser);
   return user ? (
-    <div>
-      <h2>Favorites page</h2>
-      {cards}
-    </div>
+    <div className="favorites-page">{cards}</div>
   ) : (
     <Redirect to="/signin" />
   );
