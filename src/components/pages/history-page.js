@@ -1,11 +1,41 @@
+import { nanoid } from '@reduxjs/toolkit';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Redirect } from 'react-router';
-import { selectUser } from '../../store/authorizationSlice';
+import { Link } from 'react-router-dom';
+import {
+  selectHistory,
+  selectUser,
+} from '../../store/authorizationSlice';
+import Button from '../button';
+import './history-page.css';
 
 const HistoryPage = () => {
   const user = useSelector(selectUser);
-  return user ? <h2>History Page</h2> : <Redirect to="/signin" />;
+  const history = useSelector(selectHistory);
+
+  const elements = history.reduceRight((acc, his) => {
+    const element = (
+      <Link
+        key={nanoid()}
+        className="history-page__link"
+        to={`/search=${his}`}
+      >
+        <Button
+          className="history-page__button"
+          label={`/search=${his}`}
+        />
+      </Link>
+    );
+
+    return acc.concat(element);
+  }, []);
+
+  return user ? (
+    <div className="history-page">{elements}</div>
+  ) : (
+    <Redirect to="/signin" />
+  );
 };
 
 export default HistoryPage;
