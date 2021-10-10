@@ -8,15 +8,12 @@ import storageService from '../services/storage-service';
 //myMiddleware
 const logOut = (store) => (next) => (action) => {
   if (action.type === 'authorization/logoutUser') {
-    console.log('logout middlevare');
     storageService.setToStorage('lastActiveUser', '');
   }
   next(action);
 };
 const logIn = (store) => (next) => (action) => {
   if (action.type === 'authorization/loginUser') {
-    console.log('login user middlevare');
-    console.log(action.payload);
     storageService.setToStorage(
       'lastActiveUser',
       action.payload.login

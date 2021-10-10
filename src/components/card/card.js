@@ -9,7 +9,6 @@ const Card = ({ person: { id, name } }) => {
   const dispatch = useDispatch();
   const onButtonClick = (evt) => {
     evt.preventDefault(); //отменяем действие линка
-    console.log(`добавил в избранное ${id}`);
     dispatch(addFavorites(id));
   };
 

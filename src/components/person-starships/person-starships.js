@@ -5,11 +5,9 @@ import Spinner from '../spinner';
 
 const PersonStarships = ({ urls }) => {
   const [starships, setStarships] = useState(null);
-  console.log(urls);
 
   useEffect(() => {
     apiService.getPersonStarships(urls).then((starships) => {
-      console.log(starships);
       setStarships(starships);
     });
   }, [urls]);

@@ -12,7 +12,6 @@ const PersonFilms = ({ urls }) => {
     });
   }, [urls]);
 
-  console.log(films);
   if (!films) {
     return (
       <div className="person-films">
