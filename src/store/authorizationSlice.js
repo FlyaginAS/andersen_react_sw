@@ -15,10 +15,14 @@ export const authorizationSlice = createSlice({
     logoutUser: (state) => {
       state.user = null;
     },
+    addFavorites: (state, action) => {
+      state.user.favorites.push(action.payload);
+    },
   },
 });
 
-export const { loginUser, logoutUser } = authorizationSlice.actions;
+export const { loginUser, logoutUser, addFavorites } =
+  authorizationSlice.actions;
 
 export const selectUser = (state) => state.authorization.user;
 

@@ -2,8 +2,17 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './card.css';
 import Button from '../button';
+import { useDispatch } from 'react-redux';
+import { addFavorites } from '../../store/authorizationSlice';
 
 const Card = ({ person: { id, name } }) => {
+  const dispatch = useDispatch();
+  const onButtonClick = (evt) => {
+    evt.preventDefault(); //отменяем действие линка
+    console.log(`добавил в избранное ${id}`);
+    dispatch(addFavorites(id));
+  };
+
   return (
     <Link
       to={`/person-page/${id}/films`}
@@ -19,7 +28,7 @@ const Card = ({ person: { id, name } }) => {
       </div>
       <div className="card__name">{name}</div>
       <div className="card__button">
-        <Button label="В избранное" />
+        <Button label="В избранное" onClick={onButtonClick} />
       </div>
     </Link>
   );

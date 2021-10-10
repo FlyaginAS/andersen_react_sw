@@ -24,6 +24,18 @@ const logIn = (store) => (next) => (action) => {
   }
   next(action);
 };
+//проверка разрешения диспатчить в избранное
+const checkPermissionToAddToFavorites =
+  (store) => (next) => (action) => {
+    if (action.type === 'authorization/addFavorites') {
+      //todo переписать условие через &
+      if (store.getState().authorization.user) {
+        next(action);
+      }
+    } else {
+      next(action);
+    }
+  };
 
 const store = configureStore({
   reducer: {
@@ -31,7 +43,11 @@ const store = configureStore({
     authorization: authorizationReducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(logOut, logIn),
+    getDefaultMiddleware().concat(
+      logOut,
+      logIn,
+      checkPermissionToAddToFavorites
+    ),
 });
 
 export default store;
