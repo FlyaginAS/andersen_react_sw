@@ -14,6 +14,12 @@ const SearchPanel = () => {
     dispatch(changeFilter(search));
   }, [search, dispatch]);
 
+  const onSearchClick = (evt) => {
+    if (!search) {
+      evt.preventDefault();
+    }
+  };
+
   return (
     <div className="search-panel">
       <input
@@ -27,7 +33,7 @@ const SearchPanel = () => {
       />
 
       <Link to={`/search=${search}`} className="search-panel__button">
-        <Button label="Поиск" />
+        <Button label="Поиск" onClick={onSearchClick} />
       </Link>
     </div>
   );
