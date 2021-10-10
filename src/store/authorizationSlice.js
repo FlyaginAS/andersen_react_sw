@@ -23,10 +23,16 @@ export const authorizationSlice = createSlice({
       }
       state.user.favorites.push(action.payload);
     },
+    addHistory: (state, action) => {
+      console.log('adding to history');
+      const search = action.payload;
+      const history = state.user.history;
+      history.push(search);
+    },
   },
 });
 
-export const { loginUser, logoutUser, addFavorites } =
+export const { loginUser, logoutUser, addFavorites, addHistory } =
   authorizationSlice.actions;
 
 export const selectUser = (state) => state.authorization.user;

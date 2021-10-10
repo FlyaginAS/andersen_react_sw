@@ -39,6 +39,19 @@ const checkPermissionToAddToFavorites =
     }
   };
 
+const addHistoryToStorage = (store) => (next) => (action) => {
+  if (action.type === 'authorization/addHistory') {
+    if (store.getState().authorization.user) {
+      next(action);
+      console.log('added history to storage');
+      const user = store.getState().authorization.user;
+      storageService.setToStorage(user.login, user);
+    }
+  } else {
+    next(action);
+  }
+};
+
 const store = configureStore({
   reducer: {
     people: peopleReducer,
@@ -48,7 +61,8 @@ const store = configureStore({
     getDefaultMiddleware().concat(
       logOut,
       logIn,
-      checkPermissionToAddToFavorites
+      checkPermissionToAddToFavorites,
+      addHistoryToStorage
     ),
 });
 

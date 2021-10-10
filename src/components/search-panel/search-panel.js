@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { addHistory } from '../../store/authorizationSlice';
 import { changeFilter } from '../../store/peopleSlice';
 import Button from '../button/button';
 import './search-panel.css';
@@ -18,6 +19,7 @@ const SearchPanel = () => {
     if (!search) {
       evt.preventDefault();
     }
+    dispatch(addHistory(search));
   };
 
   return (

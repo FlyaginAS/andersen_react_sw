@@ -27,7 +27,7 @@ const Signup = () => {
       login: login,
       password: password,
       favorites: [],
-      history: ['luk', 'dart', 'lei'],
+      history: [],
     };
 
     setToStorage(login, user);
