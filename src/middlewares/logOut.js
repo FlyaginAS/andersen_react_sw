@@ -1,6 +1,6 @@
 import storageService from '../services/storage-service';
 
-const logOut = (store) => (next) => (action) => {
+const logOut = () => (next) => (action) => {
   if (action.type === 'authorization/logoutUser') {
     storageService.setToStorage('lastActiveUser', '');
   }

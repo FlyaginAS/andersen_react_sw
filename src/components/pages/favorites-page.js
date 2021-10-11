@@ -28,6 +28,7 @@ const FavoritesPage = () => {
   ));
 
   const user = useSelector(selectUser);
+
   return user ? (
     arrayOfId.length === 0 ? (
       <div className="favorites-page">

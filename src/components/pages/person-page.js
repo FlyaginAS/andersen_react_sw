@@ -4,13 +4,10 @@ import PersonInfo from '../person-info';
 import PersonFilms from '../person-films';
 import PersonStarships from '../person-starships';
 import './person-page.css';
-import { useSelector } from 'react-redux';
-import { selectPerson } from '../../store/peopleSlice';
 import apiService from '../../services/api-service';
 import Spinner from '../spinner';
 
 const PersonPage = () => {
-  //хотел брать person из стора, но при перезагрузке странице стор обнулялся
   const { id } = useParams();
 
   const [person, setPerson] = useState(null);

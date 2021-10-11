@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import storageService from '../../services/storage-service';
-import {
-  loginUser,
-  selectUser,
-} from '../../store/authorizationSlice';
+import { loginUser } from '../../store/authorizationSlice';
 
 const Signin = () => {
   const dispatch = useDispatch();

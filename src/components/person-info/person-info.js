@@ -21,7 +21,7 @@ const PersonInfo = ({
         <img
           className="person-info__photo"
           src={`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`}
-          alt="photo"
+          alt="person info "
         />
       </div>
       <div className="person-info__info">

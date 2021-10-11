@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import React from 'react';
 import { Route, Switch } from 'react-router';
 import Header from '../header';
 import {
@@ -10,7 +9,6 @@ import {
   SearchPage,
   Signup,
 } from '../pages';
-import { getPeople } from '../../store/peopleSlice';
 
 import './app.css';
 import Signin from '../pages/signin';

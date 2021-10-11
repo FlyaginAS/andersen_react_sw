@@ -42,7 +42,7 @@ export const { changeFilter } = peopleSlice.actions;
 export const selectPeople = (state) => state.people.people;
 export const selectStatus = (state) => state.people.status;
 export const selectPerson = (id) => (state) =>
-  state.people.people.find((item) => item.id == id);
+  state.people.people.find((item) => item.id === id);
 export const selectFilter = (state) => state.people.filter;
 
 //экспорт созданного для нас редьюсера

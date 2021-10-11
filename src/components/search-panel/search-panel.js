@@ -25,7 +25,7 @@ const SearchPanel = () => {
   return (
     <form className="search-panel" onSubmit={onSearchClick}>
       <input
-        сlassName="search-panel__input"
+        className="search-panel__input"
         type="text"
         placeholder="Пожалуйста, введите имя персонажа"
         value={search}

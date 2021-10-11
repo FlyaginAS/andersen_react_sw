@@ -1,6 +1,4 @@
 class ApiService {
-  // _apiBase = 'https://swapi.dev/api';
-
   _transformPerson = (person) => {
     //переименовываем и берем только интересующие свойства
     return {
@@ -49,7 +47,7 @@ class ApiService {
 
     if (!res.ok) {
       throw new Error(
-        `Could not fetch ${url}` + `, received ${res.status}`
+        `Could not fetch ${url}, received ${res.status}`
       );
     }
 
@@ -70,33 +68,12 @@ class ApiService {
     return this._transformPerson(person);
   };
 
-  // getPersonFilms = async (personId) => {
-  //   let person = await this.getResource(
-  //     `https://swapi.dev/api/people/${personId}`
-  //   );
-  //   person = this._transformPerson(person);
-
-  //   const promiseArr = person.films.map(this.getResource);
-
-  //   const films = await Promise.all(promiseArr);
-  //   return films;
-  // };
   getPersonFilms = async (urls) => {
     const promiseArr = urls.map(this.getResource);
 
     const films = await Promise.all(promiseArr);
     return films.map(this._transformFilm);
   };
-
-  // getPersonStarships = async (personId) => {
-  //   const person = await this.getResource(
-  //     `https://swapi.dev/api/people/${personId}`
-  //   );
-  //   const promiseArr = person.starships.map(this.getResource);
-
-  //   const starships = await Promise.all(promiseArr);
-  //   return starships;
-  // };
 
   getPersonStarships = async (urls) => {
     const promiseArr = urls.map(this.getResource);
@@ -113,7 +90,7 @@ class ApiService {
     return res.results.map(this._transformPerson);
   };
 }
-//проверил в консоле- работает
+
 const apiService = new ApiService();
 
 export default apiService;
