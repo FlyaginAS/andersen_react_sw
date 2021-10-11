@@ -14,7 +14,7 @@ const HistoryPage = () => {
   const user = useSelector(selectUser);
 
   const history = useSelector(selectHistory);
-  if (!history) {
+  if (!user) {
     return <Redirect to="/signin" />;
   }
 

@@ -36,8 +36,10 @@ export const { loginUser, logoutUser, addFavorites, addHistory } =
   authorizationSlice.actions;
 
 export const selectUser = (state) => state.authorization.user;
-export const selectFavorites = (state) =>
-  state.authorization.user.favorites;
+export const selectFavorites = (state) => {
+  const user = state.authorization.user;
+  return user ? user.favorites : [];
+};
 
 export const selectHistory = (state) => {
   const user = state.authorization.user;
