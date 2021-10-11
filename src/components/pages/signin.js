@@ -22,7 +22,9 @@ const Signin = () => {
 
     //check password
     if (!user) {
-      setError('Такой юзер не зарегистрирован');
+      setError(
+        'Такой юзер не зарегистрирован. Проверьте правильность логина.'
+      );
       return;
     } else if (user.password !== password) {
       setError('Неверный пароль');

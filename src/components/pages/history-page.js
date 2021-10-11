@@ -12,7 +12,11 @@ import './history-page.css';
 
 const HistoryPage = () => {
   const user = useSelector(selectUser);
+
   const history = useSelector(selectHistory);
+  if (!history) {
+    return <Redirect to="/signin" />;
+  }
 
   const elements = history.reduceRight((acc, his) => {
     const element = (

@@ -33,6 +33,10 @@ const checkPermissionToAddToFavorites =
         // но не в редюсере- он чистая ф-ия
         const user = store.getState().authorization.user;
         storageService.setToStorage(user.login, user);
+      } else {
+        alert(
+          'Только зарегистрированные пользователи могут добавлять в избранное'
+        );
       }
     } else {
       next(action);

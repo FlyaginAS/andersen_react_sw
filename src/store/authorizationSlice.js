@@ -39,7 +39,10 @@ export const selectUser = (state) => state.authorization.user;
 export const selectFavorites = (state) =>
   state.authorization.user.favorites;
 
-export const selectHistory = (state) =>
-  state.authorization.user.history;
+export const selectHistory = (state) => {
+  const user = state.authorization.user;
+
+  return user ? user.history : null;
+};
 
 export default authorizationSlice.reducer;

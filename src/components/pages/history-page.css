@@ -1,0 +1,19 @@
+.history-page {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+}
+.history-page__link {
+  text-decoration: none;
+  color: #d5d8dc;
+  background-color: #32383e;
+  display: block;
+  font-size: 2rem;
+}
+.history-page__button {
+  /* width: 120px; */
+  height: 65px;
+  text-decoration: none;
+  color: #d5d8dc;
+}
