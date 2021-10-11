@@ -35,7 +35,7 @@ const SearchPanel = () => {
       />
 
       <Link to={`/search=${search}`} className="search-panel__button">
-        <Button label="Поиск" onClick={onSearchClick} />
+        <Button label="Полный поиск" onClick={onSearchClick} />
       </Link>
     </form>
   );
