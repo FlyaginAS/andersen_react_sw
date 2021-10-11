@@ -5,13 +5,15 @@ const addHistoryToStorage = (store) => (next) => (action) => {
     return next(action);
   }
 
-  const user = store.getState().authorization.user;
+  let user = store.getState().authorization.user;
 
   if (!user) {
     return;
   }
 
   next(action);
+  //получаем обновленного юзера
+  user = store.getState().authorization.user;
   storageService.setToStorage(user.login, user);
 
   // if (action.type === 'authorization/addHistory') {
